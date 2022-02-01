@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AplicacionEntradaParking.servicios
 {
-    class ComputerVisionService
+    class AzureComputerVisionService
     {
         private readonly Properties.Settings endPointVariables = Properties.Settings.Default;
         private readonly DialogosService dialogosService = new DialogosService();

@@ -126,9 +126,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="servicios\BlobStorageService.cs" />
-    <Compile Include="servicios\ComputerVisionService.cs" />
-    <Compile Include="servicios\CustomVisionService.cs" />
+    <Compile Include="servicios\AzureBlobStorageService.cs" />
+    <Compile Include="servicios\AzureComputerVisionService.cs" />
+    <Compile Include="servicios\AzureCustomVisionService.cs" />
     <Compile Include="servicios\DatosService.cs" />
     <Compile Include="servicios\DialogosService.cs" />
     <Compile Include="viewmodels\MainWindowVM.cs" />
