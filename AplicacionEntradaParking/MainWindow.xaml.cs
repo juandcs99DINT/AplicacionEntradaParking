@@ -27,6 +27,23 @@ namespace AplicacionEntradaParking
             vm = new MainWindowVM();
             this.DataContext = vm;
             InitializeComponent();
+
+
+       
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Escape)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }
