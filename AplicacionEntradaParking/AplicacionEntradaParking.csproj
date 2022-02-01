@@ -102,6 +102,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="servicios\AzureServices.cs" />
     <Compile Include="servicios\DatosService.cs" />
     <Compile Include="viewmodels\MainWindowVM.cs" />
     <Page Include="MainWindow.xaml">

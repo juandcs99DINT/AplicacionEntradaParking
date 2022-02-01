@@ -50,7 +50,7 @@ namespace AplicacionEntradaParking.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://serviciocustomvision-prediction.cognitiveservices.azure.com/")]
         public string EndpointCustomVision {
             get {
                 return ((string)(this["EndpointCustomVision"]));
@@ -62,7 +62,7 @@ namespace AplicacionEntradaParking.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("54b8c577-9f3f-4ba6-8ca3-c93db2c812a8")]
         public string IdProyectoCustomVision {
             get {
                 return ((string)(this["IdProyectoCustomVision"]));
@@ -74,7 +74,7 @@ namespace AplicacionEntradaParking.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Iteration1")]
         public string NombrePublicadoCustomVision {
             get {
                 return ((string)(this["NombrePublicadoCustomVision"]));
@@ -86,7 +86,7 @@ namespace AplicacionEntradaParking.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("dd24ccafdcf74d4481a473d6ae106b1e")]
         public string PredictionKeyCustomVision {
             get {
                 return ((string)(this["PredictionKeyCustomVision"]));
@@ -98,7 +98,7 @@ namespace AplicacionEntradaParking.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://serviciocomputervision.cognitiveservices.azure.com/")]
         public string EndpointComputerVision {
             get {
                 return ((string)(this["EndpointComputerVision"]));
@@ -110,7 +110,7 @@ namespace AplicacionEntradaParking.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5414b463aa5740f28f7cbf74be73c5b2")]
         public string OcpApimSubscriptionKeyComputerVision {
             get {
                 return ((string)(this["OcpApimSubscriptionKeyComputerVision"]));
