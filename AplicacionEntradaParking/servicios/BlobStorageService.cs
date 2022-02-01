@@ -1,5 +1,4 @@
 ﻿using Azure.Storage.Blobs;
-using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace AplicacionEntradaParking.servicios
 {
-    class AzureServices
+    class BlobStorageService
     {
-        // CLASES PARA DESERIALIZAR SERVICIO CUSTOM VISION
+        private readonly Properties.Settings endPointVariables = Properties.Settings.Default;
         private readonly DialogosService dialogosService = new DialogosService();
         public BlobContainerClient SubirImagenAzure(string rutaImagen)
         {
-            string cadenaConexion = Properties.Settings.Default.cadenaConexionBlobStorage;
+            string cadenaConexion = endPointVariables.cadenaConexionBlobStorage;
             string nombreContenedorBlobs = Properties.Settings.Default.nombreContenedorBlob;
             BlobContainerClient clienteContenedor = null;
             var clienteBlobService = new BlobServiceClient(cadenaConexion);
@@ -35,7 +34,6 @@ namespace AplicacionEntradaParking.servicios
             }
             return clienteContenedor;
         }
-
         public string ObtenerURLImagenAzure(BlobContainerClient clienteContenedor, string rutaImagen)
         {
             BlobClient clienteBlobImagen = null;
@@ -50,29 +48,5 @@ namespace AplicacionEntradaParking.servicios
             }
             return clienteBlobImagen.Uri.AbsoluteUri;
         }
-
-        public string GetTipoVehiculo(string url)
-        {
-
-        }
-
-        public class Prediction
-        {
-            public double probability { get; set; }
-            public string tagId { get; set; }
-            public string tagName { get; set; }
-        }
-
-        public class Root
-        {
-            public string id { get; set; }
-            public string project { get; set; }
-            public string iteration { get; set; }
-            public DateTime created { get; set; }
-            public List<Prediction> predictions { get; set; }
-        }
     }
-
-
-
 }
