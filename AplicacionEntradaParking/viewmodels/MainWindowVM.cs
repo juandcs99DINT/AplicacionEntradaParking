@@ -9,5 +9,6 @@ namespace AplicacionEntradaParking.viewmodels
 {
     class MainWindowVM : ObservableObject
     {
+
     }
 }

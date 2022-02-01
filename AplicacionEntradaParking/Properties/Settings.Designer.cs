@@ -119,5 +119,31 @@ namespace AplicacionEntradaParking.Properties {
                 this["OcpApimSubscriptionKeyComputerVision"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultEndpointsProtocol=https;AccountName=juegopeliculasjuandi;AccountKey=55hpkg" +
+            "qMOrvwuZDsxLmMr/l78pZCJJxaBLDQtIBWFzFKsSuHjS7i/TNpWyXVnJu7wiozsjwVpeOQtfty3asRzQ" +
+            "==;EndpointSuffix=core.windows.net")]
+        public string cadenaConexionBlobStorage {
+            get {
+                return ((string)(this["cadenaConexionBlobStorage"]));
+            }
+            set {
+                this["cadenaConexionBlobStorage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("imagenes-peliculas")]
+        public string nombreContenedorBlob {
+            get {
+                return ((string)(this["nombreContenedorBlob"]));
+            }
+            set {
+                this["nombreContenedorBlob"] = value;
+            }
+        }
     }
 }

@@ -26,5 +26,11 @@
     <Setting Name="OcpApimSubscriptionKeyComputerVision" Type="System.String" Scope="User">
       <Value Profile="(Default)">5414b463aa5740f28f7cbf74be73c5b2</Value>
     </Setting>
+    <Setting Name="cadenaConexionBlobStorage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=juegopeliculasjuandi;AccountKey=55hpkgqMOrvwuZDsxLmMr/l78pZCJJxaBLDQtIBWFzFKsSuHjS7i/TNpWyXVnJu7wiozsjwVpeOQtfty3asRzQ==;EndpointSuffix=core.windows.net</Value>
+    </Setting>
+    <Setting Name="nombreContenedorBlob" Type="System.String" Scope="User">
+      <Value Profile="(Default)">imagenes-peliculas</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
