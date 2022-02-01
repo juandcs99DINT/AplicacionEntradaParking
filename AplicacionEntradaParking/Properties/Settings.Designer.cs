@@ -34,5 +34,90 @@ namespace AplicacionEntradaParking.Properties {
                 this["rutaConexionBd"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NTY2OTI3QDMxMzkyZTM0MmUzMG85Q0toWFI2U2dGcVIwdjlXRHBDVGlHanpxZFlWVEJLcnZWUWtuSE5Ee" +
+            "kU9")]
+        public string licenciaSyncfusion {
+            get {
+                return ((string)(this["licenciaSyncfusion"]));
+            }
+            set {
+                this["licenciaSyncfusion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EndpointCustomVision {
+            get {
+                return ((string)(this["EndpointCustomVision"]));
+            }
+            set {
+                this["EndpointCustomVision"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string IdProyectoCustomVision {
+            get {
+                return ((string)(this["IdProyectoCustomVision"]));
+            }
+            set {
+                this["IdProyectoCustomVision"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NombrePublicadoCustomVision {
+            get {
+                return ((string)(this["NombrePublicadoCustomVision"]));
+            }
+            set {
+                this["NombrePublicadoCustomVision"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PredictionKeyCustomVision {
+            get {
+                return ((string)(this["PredictionKeyCustomVision"]));
+            }
+            set {
+                this["PredictionKeyCustomVision"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EndpointComputerVision {
+            get {
+                return ((string)(this["EndpointComputerVision"]));
+            }
+            set {
+                this["EndpointComputerVision"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OcpApimSubscriptionKeyComputerVision {
+            get {
+                return ((string)(this["OcpApimSubscriptionKeyComputerVision"]));
+            }
+            set {
+                this["OcpApimSubscriptionKeyComputerVision"] = value;
+            }
+        }
     }
 }
