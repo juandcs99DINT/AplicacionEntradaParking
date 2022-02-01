@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Command="{Binding Path=EntradaVehiculoCommand}">
+        <Image Source="images/ticket.png"></Image>
+        </Button>
     </Grid>
 </Window>
