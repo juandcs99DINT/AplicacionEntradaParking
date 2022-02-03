@@ -29,7 +29,7 @@ namespace AplicacionEntradaParking.servicios
                 var requestGet = new RestRequest("", Method.GET);
                 requestGet.AddHeader("Ocp-Apim-Subscription-Key", endPointVariables.OcpApimSubscriptionKeyComputerVision);
                 var responseGet = clientGet.Execute(requestGet);
-                Root root = JsonConvert.DeserializeObject<Root>(responseGet.Content);
+                RootComputer root = JsonConvert.DeserializeObject<RootComputer>(responseGet.Content);
                 // FALTA PULIR EL RECOGER LA LINEA CORRESPONDIENTE QUE CONTIENE LA MATRICULA
                 matricula = root.analyzeResult.readResults[0].lines[0].text;
             }
@@ -39,56 +39,56 @@ namespace AplicacionEntradaParking.servicios
             }
             return matricula;
         }
-        // CLASES PARA DESERIALIZAR SERVICIO COMPUTER VISION
-        public class Style
-        {
-            public string name { get; set; }
-            public double confidence { get; set; }
-        }
+    }
+    // CLASES PARA DESERIALIZAR SERVICIO COMPUTER VISION
+    public class Style
+    {
+        public string name { get; set; }
+        public double confidence { get; set; }
+    }
 
-        public class Appearance
-        {
-            public Style style { get; set; }
-        }
+    public class Appearance
+    {
+        public Style style { get; set; }
+    }
 
-        public class Word
-        {
-            public List<int> boundingBox { get; set; }
-            public string text { get; set; }
-            public double confidence { get; set; }
-        }
+    public class Word
+    {
+        public List<int> boundingBox { get; set; }
+        public string text { get; set; }
+        public double confidence { get; set; }
+    }
 
-        public class Line
-        {
-            public List<int> boundingBox { get; set; }
-            public string text { get; set; }
-            public Appearance appearance { get; set; }
-            public List<Word> words { get; set; }
-        }
+    public class Line
+    {
+        public List<int> boundingBox { get; set; }
+        public string text { get; set; }
+        public Appearance appearance { get; set; }
+        public List<Word> words { get; set; }
+    }
 
-        public class ReadResult
-        {
-            public int page { get; set; }
-            public double angle { get; set; }
-            public int width { get; set; }
-            public int height { get; set; }
-            public string unit { get; set; }
-            public List<Line> lines { get; set; }
-        }
+    public class ReadResult
+    {
+        public int page { get; set; }
+        public double angle { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+        public string unit { get; set; }
+        public List<Line> lines { get; set; }
+    }
 
-        public class AnalyzeResult
-        {
-            public string version { get; set; }
-            public string modelVersion { get; set; }
-            public List<ReadResult> readResults { get; set; }
-        }
+    public class AnalyzeResult
+    {
+        public string version { get; set; }
+        public string modelVersion { get; set; }
+        public List<ReadResult> readResults { get; set; }
+    }
 
-        public class Root
-        {
-            public string status { get; set; }
-            public DateTime createdDateTime { get; set; }
-            public DateTime lastUpdatedDateTime { get; set; }
-            public AnalyzeResult analyzeResult { get; set; }
-        }
+    public class RootComputer
+    {
+        public string status { get; set; }
+        public DateTime createdDateTime { get; set; }
+        public DateTime lastUpdatedDateTime { get; set; }
+        public AnalyzeResult analyzeResult { get; set; }
     }
 }

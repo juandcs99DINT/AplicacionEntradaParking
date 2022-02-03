@@ -24,7 +24,7 @@ namespace AplicacionEntradaParking.servicios
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(url), ParameterType.RequestBody);
                 var response = client.Execute(request);
-                Root root = JsonConvert.DeserializeObject<Root>(response.Content);
+                RootCustom root = JsonConvert.DeserializeObject<RootCustom>(response.Content);
                 tipoVehiculo = root.predictions[0].tagName;
             }
             catch (Exception)
@@ -33,22 +33,22 @@ namespace AplicacionEntradaParking.servicios
             }
             return tipoVehiculo;
         }
-        // CLASES PARA DESERIALIZAR SERVICIO CUSTOM VISION
-        public class Prediction
-        {
-            public double probability { get; set; }
-            public string tagId { get; set; }
-            public string tagName { get; set; }
-        }
+    }
 
-        public class Root
-        {
-            public string id { get; set; }
-            public string project { get; set; }
-            public string iteration { get; set; }
-            public DateTime created { get; set; }
-            public List<Prediction> predictions { get; set; }
-        }
+    // CLASES PARA DESERIALIZAR SERVICIO CUSTOM VISION
+    public class Prediction
+    {
+        public double probability { get; set; }
+        public string tagId { get; set; }
+        public string tagName { get; set; }
+    }
 
+    public class RootCustom
+    {
+        public string id { get; set; }
+        public string project { get; set; }
+        public string iteration { get; set; }
+        public DateTime created { get; set; }
+        public List<Prediction> predictions { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace AplicacionEntradaParking.modelos
 {
-    class Cliente : ObservableObject
+    public class Cliente : ObservableObject
     {
         public Cliente() { }
 
@@ -52,8 +52,8 @@ namespace AplicacionEntradaParking.modelos
             set => SetProperty(ref foto, value);
         }
 
-        private int edad;
-        public int Edad
+        private int? edad;
+        public int? Edad
         {
             get => edad;
             set => SetProperty(ref edad, value);
@@ -75,3 +75,4 @@ namespace AplicacionEntradaParking.modelos
         }
     }
 }
+

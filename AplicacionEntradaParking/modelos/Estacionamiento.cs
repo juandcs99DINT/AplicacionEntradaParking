@@ -7,9 +7,18 @@ using System.Threading.Tasks;
 
 namespace AplicacionEntradaParking.modelos
 {
-    class Estacionamiento : ObservableObject
+    public class Estacionamiento : ObservableObject
     {
         public Estacionamiento() { }
+
+        public Estacionamiento(int idEstacionamiento, int idVehiculo, string matricula, string entrada, string tipo)
+        {
+            this.idEstacionamiento = idEstacionamiento;
+            this.idVehiculo = idVehiculo;
+            this.matricula = matricula;
+            this.entrada = entrada;
+            this.tipo = tipo;
+        }
 
         public Estacionamiento(int idEstacionamiento, int idVehiculo, string matricula, string entrada, string salida, float importe, string tipo)
         {
@@ -29,8 +38,8 @@ namespace AplicacionEntradaParking.modelos
             set => SetProperty(ref idEstacionamiento, value);
         }
 
-        private int idVehiculo;
-        public int IdVehiculo
+        private int? idVehiculo;
+        public int? IdVehiculo
         {
             get => idVehiculo;
             set => SetProperty(ref idVehiculo, value);
