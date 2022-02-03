@@ -22,34 +22,9 @@ namespace AplicacionEntradaParking.servicios
             }
             return fileName;
         }
-
-        public Boolean DialogoConfirmacionAccion(string mensaje)
-        {
-            MessageBoxResult result = MessageBox.Show(mensaje, "Parking", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes) return true;
-            else return false;
-        }
-
-        public Boolean DialogoFinEstacionamiento()
-        {
-            MessageBoxResult result = MessageBox.Show("¿Estás seguro de terminar éste estacionamiento?", "Parking", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes) return true;
-            else return false;
-        }
-
         public void DialogoError(string mensaje)
         {
             MessageBox.Show(mensaje, "Parking", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
-        public void DialogoInformacion(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Parking", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        public void DialogoPrecaucion(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Parking", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

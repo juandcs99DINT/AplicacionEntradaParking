@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,20 @@ namespace AplicacionEntradaParking.servicios
     {
         private readonly Properties.Settings endPointVariables = Properties.Settings.Default;
         private readonly DialogosService dialogosService = new DialogosService();
-        public string GetMatricula(string url)
+        public string GetMatricula(string url, string tipo)
         {
             string matricula = "";
             try
             {
                 var clientPost = new RestClient(endPointVariables.EndpointComputerVision);
                 var requestPost = new RestRequest("vision/v3.2/read/analyze", Method.POST);
+                JObject requestBody = new JObject
+                {
+                    new JProperty("url", url)
+                };
                 requestPost.AddHeader("Ocp-Apim-Subscription-Key", endPointVariables.OcpApimSubscriptionKeyComputerVision);
                 requestPost.AddHeader("Content-Type", "application/json");
-                requestPost.AddParameter("application/json", JsonConvert.SerializeObject(url), ParameterType.RequestBody);
+                requestPost.AddParameter("application/json", JsonConvert.SerializeObject(requestBody), ParameterType.RequestBody);
                 var responsePost = clientPost.Execute(requestPost);
                 string urlResultadosPeticion = responsePost.Headers[0].Value.ToString();
 
@@ -30,8 +35,15 @@ namespace AplicacionEntradaParking.servicios
                 requestGet.AddHeader("Ocp-Apim-Subscription-Key", endPointVariables.OcpApimSubscriptionKeyComputerVision);
                 var responseGet = clientGet.Execute(requestGet);
                 RootComputer root = JsonConvert.DeserializeObject<RootComputer>(responseGet.Content);
-                // FALTA PULIR EL RECOGER LA LINEA CORRESPONDIENTE QUE CONTIENE LA MATRICULA
-                matricula = root.analyzeResult.readResults[0].lines[0].text;
+                if (tipo == "Coche")
+                {
+                    matricula = root.analyzeResult.readResults[0].lines[0].text;
+                }
+                else if (tipo == "Moto")
+                {
+                    matricula = root.analyzeResult.readResults[0].lines[0].text + " " +
+                        root.analyzeResult.readResults[0].lines[1].text;
+                }
             }
             catch (Exception)
             {

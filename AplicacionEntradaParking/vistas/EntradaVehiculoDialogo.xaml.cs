@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplicacionEntradaParking.viewmodels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,14 @@ namespace AplicacionEntradaParking.vistas
     /// </summary>
     public partial class EntradaVehiculoDialogo : Window
     {
+        private readonly EntradaVehiculoVM vm;
         public EntradaVehiculoDialogo()
         {
+            vm = new EntradaVehiculoVM();
+            this.DataContext = vm;
             InitializeComponent();
         }
+        private void AceptarButton_Click(object sender, RoutedEventArgs e) => DialogResult = true;
     }
 }
+

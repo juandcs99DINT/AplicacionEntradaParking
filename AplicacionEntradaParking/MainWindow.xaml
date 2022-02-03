@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicacionEntradaParking"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized"
-        Closing="Window_Closing" KeyDown="Window_KeyDown">
+        Title="Entrada al Parking" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized"
+        Closing="Window_Closing" KeyDown="Window_KeyDown" Icon="images/icono-ticket.ico">
     <Grid>
         <Button Command="{Binding Path=EntradaVehiculoCommand}" Background="Aqua">
         <Image Source="images/ticket.png"></Image>

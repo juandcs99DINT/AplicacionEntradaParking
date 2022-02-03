@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,13 @@ namespace AplicacionEntradaParking.servicios
                 var client = new RestClient(endPointVariables.EndpointCustomVision);
                 var request = new RestRequest("customvision/v3.0/Prediction/" + endPointVariables.IdProyectoCustomVision +
                     "/classify/iterations/" + endPointVariables.NombrePublicadoCustomVision + "/url", Method.POST);
+                JObject requestBody = new JObject
+                {
+                    new JProperty("url", url)
+                };
                 request.AddHeader("Prediction-Key", Properties.Settings.Default.PredictionKeyCustomVision);
                 request.AddHeader("Content-Type", "application/json");
-                request.AddParameter("application/json", JsonConvert.SerializeObject(url), ParameterType.RequestBody);
+                request.AddParameter("application/json", JsonConvert.SerializeObject(requestBody), ParameterType.RequestBody);
                 var response = client.Execute(request);
                 RootCustom root = JsonConvert.DeserializeObject<RootCustom>(response.Content);
                 tipoVehiculo = root.predictions[0].tagName;

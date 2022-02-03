@@ -8,8 +8,5 @@ using System.Threading.Tasks;
 
 namespace AplicacionEntradaParking.servicios
 {
-    class Mensajes
-    {
         public class EstacionamientoMessage : RequestMessage<Estacionamiento> { }
-    }
 }

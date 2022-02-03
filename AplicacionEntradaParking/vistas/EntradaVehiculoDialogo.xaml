@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicacionEntradaParking.vistas"
         mc:Ignorable="d"
-        Title="Entrada vehículo" Height="450" Width="300" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
-    <Grid>
-        
-    </Grid>
+        Title="Entrada vehículo" Height="320" Width="300" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="IsReadOnly" Value="True"></Setter>
+            <Setter Property="Template" Value="{DynamicResource TextBoxControlTemplate1}"></Setter>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="3,8,0,0"></Setter>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="AceptarButton">
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="Width" Value="90"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Command" Value="{Binding AceptarCommand}"></Setter>
+            <EventSetter Handler="AceptarButton_Click" Event="Click"></EventSetter>
+            <Setter Property="IsDefault" Value="True"></Setter>
+            <Setter Property="Template" Value="{DynamicResource ButtonControlTemplate1}"></Setter>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockButton" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Margin" Value="0"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Margin="15">
+        <TextBlock Margin="3,0,0,0">ID Estacionamiento</TextBlock>
+        <TextBox Text="{Binding Path=Estacionamiento.IdEstacionamiento}"></TextBox>
+        <TextBlock>ID Vehiculo</TextBlock>
+        <TextBox Text="{Binding Path=Estacionamiento.IdVehiculo}"></TextBox>
+        <TextBlock>Matrícula</TextBlock>
+        <TextBox Text="{Binding Path=Estacionamiento.Matricula}"></TextBox>
+        <TextBlock>Entrada</TextBlock>
+        <TextBox Text="{Binding Path=Estacionamiento.Entrada}"></TextBox>
+        <TextBlock>Tipo</TextBlock>
+        <TextBox Text="{Binding Path=Estacionamiento.Tipo}"></TextBox>
+        <Button Style="{StaticResource AceptarButton}" Grid.Column="1" x:Name="AceptarButton">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/images/accept.png" Margin="-15,0,5,0"></Image>
+                <TextBlock Style="{StaticResource TextBlockButton}">Aceptar</TextBlock>
+            </StackPanel>
+        </Button>
+    </StackPanel>
 </Window>
