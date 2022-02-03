@@ -26,5 +26,9 @@ namespace AplicacionEntradaParking.servicios
         {
             MessageBox.Show(mensaje, "Parking", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+        public void DialogoInformacion(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Parking", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

@@ -63,17 +63,25 @@ namespace AplicacionEntradaParking.viewmodels
             string urlImagen = ExaminarImagen();
             Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
             Estacionamiento.Matricula = computerService.GetMatricula(urlImagen, Estacionamiento.Tipo);
-            Vehiculo vehiculo = datosService.GetVehiculoByMatricula(Estacionamiento.Matricula);
-            Estacionamiento.Entrada = DateTime.Now.ToString();
-            if (vehiculo != null)
+            if (datosService.GetEstacionamientoByMatricula(Estacionamiento.Matricula) == null)
             {
-                Estacionamiento.IdVehiculo = vehiculo.IdVehiculo;
+                Vehiculo vehiculo = datosService.GetVehiculoByMatricula(Estacionamiento.Matricula);
+                Estacionamiento.Entrada = DateTime.Now.ToString();
+                if (vehiculo != null)
+                {
+                    Estacionamiento.IdVehiculo = vehiculo.IdVehiculo;
+                    datosService.IniciarEstacionamiento(Estacionamiento, true);
+                }
+                else
+                {
+                    datosService.IniciarEstacionamiento(Estacionamiento, false);
+                }
+                navigationService.AbrirEntradaVehiculoDialogo();
             }
-            if (datosService.IniciarEstacionamiento(Estacionamiento) > 0)
+            else
             {
-                dialogosService.DialogoError("Se ha producido un error al iniciar el estacionamiento.");
+                dialogosService.DialogoError("Ya hay vehículo dentro con la misma matrícula");
             }
-            navigationService.AbrirEntradaVehiculoDialogo();
         }
     }
 }

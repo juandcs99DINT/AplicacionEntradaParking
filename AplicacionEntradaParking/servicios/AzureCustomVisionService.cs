@@ -25,7 +25,7 @@ namespace AplicacionEntradaParking.servicios
                 {
                     new JProperty("url", url)
                 };
-                request.AddHeader("Prediction-Key", Properties.Settings.Default.PredictionKeyCustomVision);
+                request.AddHeader("Prediction-Key", Properties.Settings.Default.customVisionKey);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(requestBody), ParameterType.RequestBody);
                 var response = client.Execute(request);

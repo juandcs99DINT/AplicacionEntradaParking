@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicacionEntradaParking.vistas"
         mc:Ignorable="d"
-        Title="Entrada vehículo" Height="320" Width="300" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="Entrada vehículo" Height="310" Width="300" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="IsReadOnly" Value="True"></Setter>
@@ -30,8 +30,6 @@
     </Window.Resources>
 
     <StackPanel Margin="15">
-        <TextBlock Margin="3,0,0,0">ID Estacionamiento</TextBlock>
-        <TextBox Text="{Binding Path=Estacionamiento.IdEstacionamiento}"></TextBox>
         <TextBlock>ID Vehiculo</TextBlock>
         <TextBox Text="{Binding Path=Estacionamiento.IdVehiculo}"></TextBox>
         <TextBlock>Matrícula</TextBlock>

@@ -87,12 +87,12 @@ namespace AplicacionEntradaParking.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("dd24ccafdcf74d4481a473d6ae106b1e")]
-        public string PredictionKeyCustomVision {
+        public string customVisionKey {
             get {
-                return ((string)(this["PredictionKeyCustomVision"]));
+                return ((string)(this["customVisionKey"]));
             }
             set {
-                this["PredictionKeyCustomVision"] = value;
+                this["customVisionKey"] = value;
             }
         }
         
@@ -111,12 +111,12 @@ namespace AplicacionEntradaParking.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5414b463aa5740f28f7cbf74be73c5b2")]
-        public string OcpApimSubscriptionKeyComputerVision {
+        public string computerVisionKey {
             get {
-                return ((string)(this["OcpApimSubscriptionKeyComputerVision"]));
+                return ((string)(this["computerVisionKey"]));
             }
             set {
-                this["OcpApimSubscriptionKeyComputerVision"] = value;
+                this["computerVisionKey"] = value;
             }
         }
         
@@ -143,6 +143,30 @@ namespace AplicacionEntradaParking.Properties {
             }
             set {
                 this["nombreContenedorBlob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int numeroPlazasCoche {
+            get {
+                return ((int)(this["numeroPlazasCoche"]));
+            }
+            set {
+                this["numeroPlazasCoche"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int numeroPlazasMoto {
+            get {
+                return ((int)(this["numeroPlazasMoto"]));
+            }
+            set {
+                this["numeroPlazasMoto"] = value;
             }
         }
     }

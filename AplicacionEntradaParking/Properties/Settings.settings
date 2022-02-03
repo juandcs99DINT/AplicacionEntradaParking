@@ -17,13 +17,13 @@
     <Setting Name="NombrePublicadoCustomVision" Type="System.String" Scope="User">
       <Value Profile="(Default)">Iteration1</Value>
     </Setting>
-    <Setting Name="PredictionKeyCustomVision" Type="System.String" Scope="User">
+    <Setting Name="customVisionKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">dd24ccafdcf74d4481a473d6ae106b1e</Value>
     </Setting>
     <Setting Name="EndpointComputerVision" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://serviciocomputervision.cognitiveservices.azure.com/</Value>
     </Setting>
-    <Setting Name="OcpApimSubscriptionKeyComputerVision" Type="System.String" Scope="User">
+    <Setting Name="computerVisionKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">5414b463aa5740f28f7cbf74be73c5b2</Value>
     </Setting>
     <Setting Name="cadenaConexionBlobStorage" Type="System.String" Scope="User">
@@ -31,6 +31,12 @@
     </Setting>
     <Setting Name="nombreContenedorBlob" Type="System.String" Scope="User">
       <Value Profile="(Default)">imagenes-peliculas</Value>
+    </Setting>
+    <Setting Name="numeroPlazasCoche" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="numeroPlazasMoto" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>
