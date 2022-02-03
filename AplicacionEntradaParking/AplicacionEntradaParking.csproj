@@ -131,6 +131,7 @@
     <Compile Include="servicios\AzureCustomVisionService.cs" />
     <Compile Include="servicios\DatosService.cs" />
     <Compile Include="servicios\DialogosService.cs" />
+    <Compile Include="servicios\Mensajes.cs" />
     <Compile Include="servicios\NavigationService.cs" />
     <Compile Include="viewmodels\EntradaVehiculoVM.cs" />
     <Compile Include="viewmodels\MainWindowVM.cs" />
