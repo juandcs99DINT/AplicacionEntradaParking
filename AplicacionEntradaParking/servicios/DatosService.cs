@@ -111,5 +111,32 @@ namespace AplicacionEntradaParking.servicios
             }
             return estacionamiento;
         }
+        public int GetCantEstacionamientosTipo(string tipo)
+        {
+            int cantidad = 0;
+            try
+            {
+                conexion.Open();
+                SqliteCommand comando = conexion.CreateCommand();
+                comando.CommandText = "SELECT * FROM estacionamientos WHERE tipo = @tipo AND salida IS NULL";
+                comando.Parameters.Add("@tipo", SqliteType.Text);
+                comando.Parameters["@tipo"].Value = tipo;
+                SqliteDataReader cursorEstacionamientos = comando.ExecuteReader();
+                if (cursorEstacionamientos.HasRows)
+                {
+                    while (cursorEstacionamientos.Read())
+                    {
+                        cantidad++;
+                    }
+                }
+                cursorEstacionamientos.Close();
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                dialogosService.DialogoError(e.Message);
+            }
+            return cantidad;
+        }
     }
 }
