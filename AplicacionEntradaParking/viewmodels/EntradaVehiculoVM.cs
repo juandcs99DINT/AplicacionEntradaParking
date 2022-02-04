@@ -16,10 +16,7 @@ namespace AplicacionEntradaParking.viewmodels
         public EntradaVehiculoVM()
         {
             RecibirEstacionamiento();
-            AceptarCommand = new RelayCommand(CerrarEntradaAlParking);
         }
-
-        public RelayCommand AceptarCommand { get; }
 
         private Estacionamiento estacionamiento;
         public Estacionamiento Estacionamiento
@@ -27,8 +24,6 @@ namespace AplicacionEntradaParking.viewmodels
             get => estacionamiento;
             set => SetProperty(ref estacionamiento, value);
         }
-
-        public void CerrarEntradaAlParking() => System.Windows.Application.Current.Shutdown();
 
         public void RecibirEstacionamiento()
         {

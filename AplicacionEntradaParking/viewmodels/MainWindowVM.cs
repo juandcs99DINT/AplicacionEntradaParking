@@ -61,13 +61,13 @@ namespace AplicacionEntradaParking.viewmodels
         public void EntradaVehiculo()
         {
             string urlImagen = ExaminarImagen();
-            Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
-            int numeroPlazas = Estacionamiento.Tipo == "Coche" ? Properties.Settings.Default.numeroPlazasCoche :
-                Properties.Settings.Default.numeroPlazasMoto;
-            if (datosService.GetCantEstacionamientosTipo(Estacionamiento.Tipo) < numeroPlazas)
+            Estacionamiento.Matricula = computerService.GetMatricula(urlImagen, Estacionamiento.Tipo);
+            if (datosService.GetEstacionamientoByMatricula(Estacionamiento.Matricula) == null)
             {
-                Estacionamiento.Matricula = computerService.GetMatricula(urlImagen, Estacionamiento.Tipo);
-                if (datosService.GetEstacionamientoByMatricula(Estacionamiento.Matricula) == null)
+                Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
+                int numeroPlazas = Estacionamiento.Tipo == "Coche" ? Properties.Settings.Default.numeroPlazasCoche :
+                Properties.Settings.Default.numeroPlazasMoto;
+                if (datosService.GetCantEstacionamientosTipo(Estacionamiento.Tipo) < numeroPlazas)
                 {
                     Vehiculo vehiculo = datosService.GetVehiculoByMatricula(Estacionamiento.Matricula);
                     Estacionamiento.Entrada = DateTime.Now.ToString();
@@ -84,12 +84,12 @@ namespace AplicacionEntradaParking.viewmodels
                 }
                 else
                 {
-                    dialogosService.DialogoError("Ya hay vehículo dentro con la misma matrícula");
+                    dialogosService.DialogoError("Ahora mismo no hay hueco en el parking. Debes volver más tarde.");
                 }
             }
             else
             {
-                dialogosService.DialogoError("Ahora mismo no hay hueco en el parking. Debes volver más tarde.");
+                dialogosService.DialogoError("Ya hay vehículo dentro con la misma matrícula");
             }
 
         }

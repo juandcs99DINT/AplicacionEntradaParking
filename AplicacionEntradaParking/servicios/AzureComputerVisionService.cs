@@ -31,19 +31,30 @@ namespace AplicacionEntradaParking.servicios
                 var responsePost = clientPost.Execute(requestPost);
                 string urlResultadosPeticion = responsePost.Headers[0].Value.ToString();
 
-                var clientGet = new RestClient(urlResultadosPeticion);
-                var requestGet = new RestRequest("", Method.GET);
-                requestGet.AddHeader("Ocp-Apim-Subscription-Key", endPointVariables.computerVisionKey);
-                var responseGet = clientGet.Execute(requestGet);
-                RootComputer root = JsonConvert.DeserializeObject<RootComputer>(responseGet.Content);
+                Thread.Sleep(1000);
+                bool peticionGetTerminada = false;
+                RootComputer root = null;
+                while (!peticionGetTerminada)
+                {
+                    var clientGet = new RestClient(urlResultadosPeticion);
+                    var requestGet = new RestRequest("", Method.GET);
+                    requestGet.AddHeader("Ocp-Apim-Subscription-Key", endPointVariables.computerVisionKey);
+                    var responseGet = clientGet.Execute(requestGet);
+                    root = JsonConvert.DeserializeObject<RootComputer>(responseGet.Content);
+                    if (root.status == "succeeded")
+                    {
+                        peticionGetTerminada = true;
+                    }
+                    Thread.Sleep(1000);
+                }
                 if (tipo == "Coche")
                 {
                     matricula = root.analyzeResult.readResults[0].lines[0].text;
                 }
                 else if (tipo == "Moto")
                 {
-                      matricula = root.analyzeResult.readResults[0].lines[0].text + " " +
-                        root.analyzeResult.readResults[0].lines[1].text;
+                    matricula = root.analyzeResult.readResults[0].lines[0].text + " " +
+                      root.analyzeResult.readResults[0].lines[1].text;
                 }
             }
             catch (Exception)
