@@ -61,10 +61,10 @@ namespace AplicacionEntradaParking.viewmodels
         public void EntradaVehiculo()
         {
             string urlImagen = ExaminarImagen();
+            Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
             Estacionamiento.Matricula = computerService.GetMatricula(urlImagen, Estacionamiento.Tipo);
             if (datosService.GetEstacionamientoByMatricula(Estacionamiento.Matricula) == null)
             {
-                Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
                 int numeroPlazas = Estacionamiento.Tipo == "Coche" ? Properties.Settings.Default.numeroPlazasCoche :
                 Properties.Settings.Default.numeroPlazasMoto;
                 if (datosService.GetCantEstacionamientosTipo(Estacionamiento.Tipo) < numeroPlazas)
