@@ -61,36 +61,40 @@ namespace AplicacionEntradaParking.viewmodels
         public void EntradaVehiculo()
         {
             string urlImagen = ExaminarImagen();
-            Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
-            Estacionamiento.Matricula = computerService.GetMatricula(urlImagen, Estacionamiento.Tipo);
-            if (datosService.GetEstacionamientoByMatricula(Estacionamiento.Matricula) == null)
+            if(urlImagen.Length != 0)
             {
-                int numeroPlazas = Estacionamiento.Tipo == "Coche" ? Properties.Settings.Default.numeroPlazasCoche :
-                Properties.Settings.Default.numeroPlazasMoto;
-                if (datosService.GetCantEstacionamientosTipo(Estacionamiento.Tipo) < numeroPlazas)
+                Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
+                Estacionamiento.Matricula = computerService.GetMatricula(urlImagen, Estacionamiento.Tipo);
+                if (datosService.GetEstacionamientoByMatricula(Estacionamiento.Matricula) == null)
                 {
-                    Vehiculo vehiculo = datosService.GetVehiculoByMatricula(Estacionamiento.Matricula);
-                    Estacionamiento.Entrada = DateTime.Now.ToString();
-                    if (vehiculo != null)
+                    int numeroPlazas = Estacionamiento.Tipo == "Coche" ? Properties.Settings.Default.numeroPlazasCoche :
+                    Properties.Settings.Default.numeroPlazasMoto;
+                    if (datosService.GetCantEstacionamientosTipo(Estacionamiento.Tipo) < numeroPlazas)
                     {
-                        Estacionamiento.IdVehiculo = vehiculo.IdVehiculo;
-                        datosService.IniciarEstacionamiento(Estacionamiento, true);
+                        Vehiculo vehiculo = datosService.GetVehiculoByMatricula(Estacionamiento.Matricula);
+                        Estacionamiento.Entrada = DateTime.Now.ToString();
+                        if (vehiculo != null)
+                        {
+                            Estacionamiento.IdVehiculo = vehiculo.IdVehiculo;
+                            datosService.IniciarEstacionamiento(Estacionamiento, true);
+                        }
+                        else
+                        {
+                            datosService.IniciarEstacionamiento(Estacionamiento, false);
+                        }
+                        navigationService.AbrirEntradaVehiculoDialogo();
                     }
                     else
                     {
-                        datosService.IniciarEstacionamiento(Estacionamiento, false);
+                        dialogosService.DialogoError("Ahora mismo no hay hueco en el parking. Debes volver más tarde.");
                     }
-                    navigationService.AbrirEntradaVehiculoDialogo();
                 }
                 else
                 {
-                    dialogosService.DialogoError("Ahora mismo no hay hueco en el parking. Debes volver más tarde.");
+                    dialogosService.DialogoError("Ya hay vehículo dentro con la misma matrícula");
                 }
             }
-            else
-            {
-                dialogosService.DialogoError("Ya hay vehículo dentro con la misma matrícula");
-            }
+           
 
         }
     }
