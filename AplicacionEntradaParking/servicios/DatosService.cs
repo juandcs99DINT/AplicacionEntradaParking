@@ -82,7 +82,7 @@ namespace AplicacionEntradaParking.servicios
             {
                 conexion.Open();
                 SqliteCommand comando = conexion.CreateCommand();
-                comando.CommandText = "SELECT * FROM estacionamientos WHERE matricula = @matricula";
+                comando.CommandText = "SELECT * FROM estacionamientos WHERE matricula = @matricula AND salida IS NULL";
                 comando.Parameters.Add("@matricula", SqliteType.Text);
                 comando.Parameters["@matricula"].Value = matricula;
                 SqliteDataReader cursorEstacionamientos = comando.ExecuteReader();

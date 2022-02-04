@@ -46,25 +46,25 @@ namespace AplicacionEntradaParking.viewmodels
               });
         }
 
-        public string ExaminarImagen()
+        public bool ProcesarImagen()
         {
-            string urlImagenAzure = "";
             string rutaImagen = dialogosService.DialogoOpenFile();
             if (rutaImagen.Length != 0)
             {
                 BlobContainerClient blobContainerClient = blobStorageService.SubirImagenAzure(rutaImagen);
-                urlImagenAzure = blobStorageService.ObtenerURLImagenAzure(blobContainerClient, rutaImagen);
+                string urlImagenAzure = blobStorageService.ObtenerURLImagenAzure(blobContainerClient, rutaImagen);
+                Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagenAzure);
+                Estacionamiento.Matricula = computerService.GetMatricula(urlImagenAzure, Estacionamiento.Tipo);
+                return true;
             }
-            return urlImagenAzure;
+            return false;
         }
 
         public void EntradaVehiculo()
         {
-            string urlImagen = ExaminarImagen();
-            if(urlImagen.Length != 0)
+            if(ProcesarImagen())
             {
-                Estacionamiento.Tipo = customService.GetTipoVehiculo(urlImagen);
-                Estacionamiento.Matricula = computerService.GetMatricula(urlImagen, Estacionamiento.Tipo);
+                Estacionamiento.IdVehiculo = null;
                 if (datosService.GetEstacionamientoByMatricula(Estacionamiento.Matricula) == null)
                 {
                     int numeroPlazas = Estacionamiento.Tipo == "Coche" ? Properties.Settings.Default.numeroPlazasCoche :
@@ -94,8 +94,6 @@ namespace AplicacionEntradaParking.viewmodels
                     dialogosService.DialogoError("Ya hay vehículo dentro con la misma matrícula");
                 }
             }
-           
-
         }
     }
 }
